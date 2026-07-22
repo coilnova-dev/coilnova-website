@@ -50,6 +50,17 @@ function getSavedLanguage() {
   return localStorage.getItem(STORAGE_KEY);
 }
 
+function getBrowserLanguage() {
+  const languages = [
+    ...(navigator.languages || []),
+    navigator.language,
+    navigator.userLanguage,
+    navigator.browserLanguage,
+  ].filter(Boolean);
+
+  return languages.some((lang) => lang.toLowerCase().startsWith('pt')) ? 'pt' : 'en';
+}
+
 function updateLanguageButtons(lang) {
   const activeClass = 'btn-active';
   document.querySelectorAll('[data-lang]').forEach((button) => {
@@ -64,17 +75,49 @@ function updateLanguageButtons(lang) {
   });
 }
 
+function updateContactSection(lang) {
+  const tallyContainer = document.getElementById('tally-embed-container');
+  const englishForm = document.getElementById('contact-form-en');
+
+  if (!tallyContainer || !englishForm) {
+    return;
+  }
+
+  if (lang === 'pt') {
+    if (!tallyContainer.querySelector('iframe')) {
+      tallyContainer.innerHTML = `
+        <iframe
+          src="https://tally.so/embed/r/vGvyxl?alignLeft=1&hideTitle=1&transparentBackground=1"
+          title="Formulário COILNOVA"
+          width="100%"
+          height="640"
+          frameborder="0"
+          marginheight="0"
+          marginwidth="0"
+          scrolling="no"
+        ></iframe>
+      `;
+    }
+    tallyContainer.hidden = false;
+    englishForm.hidden = true;
+  } else {
+    tallyContainer.hidden = true;
+    englishForm.hidden = false;
+  }
+}
+
 async function setLanguage(lang) {
   const translations = await loadLocale(lang);
   applyTranslations(translations);
   setDocumentLanguage(lang);
   saveLanguage(lang);
   updateLanguageButtons(lang);
+  updateContactSection(lang);
 }
 
 function initLanguageSwitcher() {
   const savedLang = getSavedLanguage();
-  const preferredLang = savedLang || DEFAULT_LANG;
+  const initialLang = savedLang || getBrowserLanguage();
 
   document.querySelectorAll('[data-lang]').forEach((button) => {
     button.addEventListener('click', () => {
@@ -83,7 +126,7 @@ function initLanguageSwitcher() {
     });
   });
 
-  setLanguage(preferredLang).catch((error) => {
+  setLanguage(initialLang).catch((error) => {
     console.error('Failed to load translations:', error);
   });
 }

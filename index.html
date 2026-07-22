@@ -310,31 +310,35 @@
           </div>
         </div>
 
-        <form class="contact-form reveal" action="https://formsubmit.co/coilnova.automation@gmail.com" method="POST">
-          <input type="hidden" name="_subject" value="Novo pedido através do site COILNOVA">
-          <input type="hidden" name="_captcha" value="false">
-          <input type="hidden" name="_template" value="table">
+        <div id="contact-panel">
+          <div id="tally-embed-container" class="contact-form reveal"></div>
 
-          <div class="form-row">
-            <label data-i18n="formLabelName">Nome
-              <input type="text" name="nome" required>
+          <form id="contact-form-en" class="contact-form reveal" action="https://formsubmit.co/coilnova.automation@gmail.com" method="POST" hidden>
+            <input type="hidden" name="_subject" value="New request from COILNOVA website">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_template" value="table">
+
+            <div class="form-row">
+              <label>Name
+                <input type="text" name="name" required>
+              </label>
+              <label>Email
+                <input type="email" name="email" required>
+              </label>
+            </div>
+
+            <label>Company
+              <input type="text" name="company">
             </label>
-            <label data-i18n="formLabelEmail">Email
-              <input type="email" name="email" required>
+
+            <label>Describe your workflow or biggest challenge
+              <textarea name="message" rows="5" required></textarea>
             </label>
-          </div>
 
-          <label data-i18n="formLabelCompany">Empresa
-            <input type="text" name="empresa">
-          </label>
-
-          <label data-i18n="formLabelMessage">O que gostaria de automatizar?
-            <textarea name="mensagem" rows="5" required></textarea>
-          </label>
-
-          <button class="btn full" type="submit" data-i18n="formSubmit">Pedir análise gratuita</button>
-          <p class="privacy" data-i18n="formPrivacy">Os seus dados serão usados apenas para responder ao pedido.</p>
-        </form>
+            <button class="btn full" type="submit">Request a free analysis</button>
+            <p class="privacy">Your data will only be used to respond to the request.</p>
+          </form>
+        </div>
         <div class="contact-direct">
           <h4 data-i18n="contactDirectTitle">Prefere falar connosco diretamente?</h4>
 
