@@ -101,15 +101,13 @@ function updateContactSection(lang) {
     }
     tallyContainer.hidden = false;
     englishForm.hidden = true;
-    heroCta.href = 'https://tally.so/r/vGvyxl';
-    heroCta.setAttribute('target', '_blank');
-    heroCta.removeAttribute('data-scroll-target');
+    heroCta.href = '#tally-embed-container';
+    heroCta.removeAttribute('target');
   } else {
     tallyContainer.hidden = true;
     englishForm.hidden = false;
-    heroCta.href = '#contacto';
+    heroCta.href = '#contact-form-en';
     heroCta.removeAttribute('target');
-    heroCta.removeAttribute('data-scroll-target');
   }
 }
 
