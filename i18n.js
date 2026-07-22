@@ -85,29 +85,24 @@ function updateContactSection(lang) {
   }
 
   if (lang === 'pt') {
-    if (!tallyContainer.querySelector('iframe')) {
-      tallyContainer.innerHTML = `
-        <iframe
-          src="https://tally.so/embed/r/vGvyxl?alignLeft=1&hideTitle=1&transparentBackground=1"
-          title="Formulário COILNOVA"
-          width="100%"
-          height="640"
-          frameborder="0"
-          marginheight="0"
-          marginwidth="0"
-          scrolling="no"
-        ></iframe>
-      `;
-    }
+    tallyContainer.innerHTML = `
+      <div class="pt-contact-message">
+        <h3>Pronto para descobrir oportunidades de automação?</h3>
+        <p>Preencha o nosso diagnóstico gratuito e receba sugestões personalizadas para o seu negócio.</p>
+        <a class="btn full" href="https://tally.so/r/vGvyxl" target="_blank" rel="noopener noreferrer">Abrir formulário de diagnóstico</a>
+      </div>
+    `;
     tallyContainer.hidden = false;
     englishForm.hidden = true;
-    heroCta.href = '#tally-embed-container';
-    heroCta.removeAttribute('target');
+    heroCta.href = 'https://tally.so/r/vGvyxl';
+    heroCta.setAttribute('target', '_blank');
+    heroCta.setAttribute('rel', 'noopener noreferrer');
   } else {
     tallyContainer.hidden = true;
     englishForm.hidden = false;
     heroCta.href = '#contact-form-en';
     heroCta.removeAttribute('target');
+    heroCta.removeAttribute('rel');
   }
 }
 
