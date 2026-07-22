@@ -78,8 +78,9 @@ function updateLanguageButtons(lang) {
 function updateContactSection(lang) {
   const tallyContainer = document.getElementById('tally-embed-container');
   const englishForm = document.getElementById('contact-form-en');
+  const heroCta = document.getElementById('hero-cta');
 
-  if (!tallyContainer || !englishForm) {
+  if (!tallyContainer || !englishForm || !heroCta) {
     return;
   }
 
@@ -100,9 +101,15 @@ function updateContactSection(lang) {
     }
     tallyContainer.hidden = false;
     englishForm.hidden = true;
+    heroCta.href = 'https://tally.so/r/vGvyxl';
+    heroCta.setAttribute('target', '_blank');
+    heroCta.removeAttribute('data-scroll-target');
   } else {
     tallyContainer.hidden = true;
     englishForm.hidden = false;
+    heroCta.href = '#contacto';
+    heroCta.removeAttribute('target');
+    heroCta.removeAttribute('data-scroll-target');
   }
 }
 
