@@ -113,6 +113,9 @@ async function setLanguage(lang) {
   saveLanguage(lang);
   updateLanguageButtons(lang);
   updateContactSection(lang);
+  if (typeof renderPortfolioProjects === 'function') {
+    renderPortfolioProjects(lang);
+  }
 }
 
 function initLanguageSwitcher() {

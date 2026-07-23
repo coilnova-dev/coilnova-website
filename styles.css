@@ -30,3 +30,72 @@
 .contact-direct small {
     color: #8f9db2;
 }
+
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+    margin-top: 44px;
+}
+
+.project {
+    display: flex;
+    flex-direction: column;
+    min-height: 320px;
+    height: 100%;
+}
+
+.project-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 22px;
+}
+
+.project-top .project-tag {
+    color: #7cc8ff;
+    font-size: .82rem;
+    letter-spacing: .09em;
+    text-transform: uppercase;
+}
+
+.project h3 {
+    margin: 0 0 16px;
+}
+
+.project p {
+    flex: 1;
+    margin: 0;
+    color: #c7d2e0;
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 22px;
+}
+
+.tag {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 12px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, .05);
+    color: #d5e6ff;
+    font-size: .85rem;
+}
+
+@media (max-width: 950px) {
+    .portfolio-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 700px) {
+    .portfolio-grid {
+        grid-template-columns: 1fr;
+    }
+}
